@@ -1,4 +1,3 @@
-import boardHandler as bh
 import pieceHandler as ph
 
 def knightmove(knight : ph.knight):

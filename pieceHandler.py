@@ -68,7 +68,7 @@ class king():
     def __init__(self, x, y, color) -> None:
         self.x = x
         self.y = y
-        self.type = "pawn"
+        self.type = "king"
         self.typeShort = "k"
         self.material = 999
         self.color = color

@@ -2,15 +2,15 @@ import boardHandler as bh
 
 def printBoard(board : bh.main):
     board = board.getBoard()
-    for i in range(8):
-        for j in range(8):
-            if board[i][j] == None:
-                print(" ", end="")
-            else:
-                if board[i][j]["color"] == "white":
-                    print(board[i][j]["type"].upper(), end=" ")
+    for y in range(8):
+        for x in range(8):
+            if x in board and y in board[x]:
+                if board[x][y]["color"] == "white":
+                    print(board[x][y]["typeShort"].upper(), end=" ")
                 else:
-                    print(board[i][j]["type"], end=" ")
+                    print(board[x][y]["typeShort"].lower(), end=" ")
+            else:
+                print(" ", end=" ")
         print()
 
 if __name__ == "__main__":
