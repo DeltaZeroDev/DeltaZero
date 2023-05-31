@@ -1,4 +1,5 @@
 import boardHandler as bh
+import knightMove as km
 import colorama as c
 
 def printBoard(board : bh.main):
@@ -16,4 +17,8 @@ def printBoard(board : bh.main):
 
 if __name__ == "__main__":
     board = bh.main()
-    printBoard(board)
+    while True:
+        printBoard(board)
+        x, y = input("x: "), input("y: ")
+        if board.getBoard()[int(x)][int(y)]["type"] == "knight":
+            board.setPiece(int(x), int(y), km.knightmove(board.getPiece(int(x), int(y))))

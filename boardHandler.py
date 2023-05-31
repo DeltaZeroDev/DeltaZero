@@ -14,6 +14,19 @@ class main():
                 board[peice["x"]] = {}
             board[peice["x"]][peice["y"]] = peice
         return board
+    
+    def getPiece(self, x, y):
+        for piece in self.board:
+            if piece.x == x and piece.y == y:
+                return piece
+        return None
+    
+    def setPiece(self, x, y, piece):
+        for i in range(len(self.board)):
+            if self.board[i].x == x and self.board[i].y == y:
+                self.board[i] = piece
+                return
+        self.board.append(piece)
 
     def placePieces(self):
         for i in range(8):

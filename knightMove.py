@@ -1,9 +1,8 @@
 import pieceHandler as ph
 
 def knightmove(knight : ph.knight):
-
-    knightx = int(input("x coords of where trying to move"))
-    knighty = int(input("y coord of where trying to move"))
+    knightx = int(input("x coords of where trying to move: "))
+    knighty = int(input("y coord of where trying to move: "))
 
     if knightx == knight.x + 2 and knighty == knight.y + 1:
         knight.x = knightx
@@ -34,3 +33,5 @@ def knightmove(knight : ph.knight):
     
     else:
         print("illegal move")
+
+    return knight
