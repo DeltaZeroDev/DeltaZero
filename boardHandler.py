@@ -15,8 +15,16 @@ class main():
             board[peice["x"]][peice["y"]] = peice
         return board
     
+    def isOccupied(self,x,y):
+        print(x, y)
+        sortedBoard = [[0] * 8 for i in range(0,8)]
+        for peice in map(lambda j: j.__dict__(),self.board):
+            sortedBoard[peice["y"]][peice["x"]] = [peice["typeShort"],peice["color"]]
+        return sortedBoard[x][y] != 0
+    
     def getPiece(self, x, y):
         for piece in self.board:
+            print(piece.x, piece.y, x, y)
             if piece.x == x and piece.y == y:
                 return piece
         return None
