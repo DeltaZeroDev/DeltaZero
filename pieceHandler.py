@@ -16,7 +16,7 @@ class knight():
         self.x = x
         self.y = y
         self.type = "knight"
-        self.typeShort = "h"
+        self.typeShort = "n"
         self.material = 3
         self.color = color
         self.moved = False
