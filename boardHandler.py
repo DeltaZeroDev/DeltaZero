@@ -1,4 +1,4 @@
-class chessBoard():
+class main():
     def __init__(self) -> None:
         self.board = [[0 for i in range(8)] for j in range(8)]
 
@@ -13,3 +13,6 @@ class chessBoard():
             return None
         else:
             self.board[x][y] = value
+
+    def getBoard(self):
+        return self.board
