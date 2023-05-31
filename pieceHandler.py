@@ -4,8 +4,9 @@ class pawn():
         self.y = y
         self.type = "pawn"
         self.typeShort = "p"
+        self.material = 1
         self.color = color
         self.moved = False
 
     def __dict__(self) -> dict:
-        return {"x": self.x, "y": self.y, "type": self.type, "color": self.color, "moved": self.moved, "typeShort": self.typeShort}
+        return {"x": self.x, "y": self.y, "type": self.type, "color": self.color, "moved": self.moved, "typeShort": self.typeShort, "material": self.material}
