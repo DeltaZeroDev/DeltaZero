@@ -1,4 +1,5 @@
 import boardHandler as bh
+import colorama as c
 
 def printBoard(board : bh.main):
     board = board.getBoard()
@@ -6,9 +7,9 @@ def printBoard(board : bh.main):
         for x in range(8):
             if x in board and y in board[x]:
                 if board[x][y]["color"] == "white":
-                    print(board[x][y]["typeShort"].upper(), end=" ")
+                    print(c.Fore.RED + board[x][y]["typeShort"].upper() + c.Style.RESET_ALL, end=" ")
                 else:
-                    print(board[x][y]["typeShort"].lower(), end=" ")
+                    print(c.Fore.BLUE + board[x][y]["typeShort"].lower() + c.Style.RESET_ALL, end=" ")
             else:
                 print(" ", end=" ")
         print()
