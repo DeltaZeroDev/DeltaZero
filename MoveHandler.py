@@ -31,5 +31,39 @@ def knightmove(knight : ph.knight, knightx : int, knighty : int):
     elif knightx == knight.x + 1 and knighty == knight.y - 2:
         knight.x = knightx
         knight.y = knighty
-
+    else:
+        print("illegal move")
     return knight
+
+def bishopmove(bishop : ph.bishop, bishopx : int, bishopy : int, board):
+    pseudoLegals = []
+    def check():
+        if min(pseudoLegals[-1]) < 0 or max(pseudoLegals[-1]) > 7:
+            pseudoLegals.pop()
+            return False
+        if board.isOccupied(*pseudoLegals[-1]):
+            if board.getPiece(*pseudoLegals[-1]).color == bishop.color:
+                pseudoLegals.pop()
+            return True
+        return False
+
+    for x in range(1,7):
+            pseudoLegals.append([bishop.x - x,bishop.y + x])
+            if check():
+                break
+    for x in range(1,7):
+            pseudoLegals.append([bishop.x + x,bishop.y + x])
+            if check():
+                break
+    for x in reversed(range(7,0,-1)):
+            pseudoLegals.append([bishop.x + x,bishop.y - x])
+            if check():
+                break
+    for x in reversed(range(7,0,-1)):
+            pseudoLegals.append([bishop.x - x,bishop.y - x])
+            if check():
+                break
+
+    else:
+        print("illegal move")
+    return bishop
