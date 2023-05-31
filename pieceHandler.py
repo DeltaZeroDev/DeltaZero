@@ -7,6 +7,9 @@ class pawn():
         self.material = 1
         self.color = color
         self.moved = False
+
+    def __dict__(self) -> dict:
+        return {"x": self.x, "y": self.y, "type": self.type, "color": self.color, "moved": self.moved, "typeShort": self.typeShort, "material": self.material}
         
 class knight():
     def __init__(self, x, y, color) -> None:
@@ -17,6 +20,9 @@ class knight():
         self.material = 3
         self.color = color
         self.moved = False
+
+    def __dict__(self) -> dict:
+        return {"x": self.x, "y": self.y, "type": self.type, "color": self.color, "moved": self.moved, "typeShort": self.typeShort, "material": self.material}
         
 class bishop():
     def __init__(self, x, y, color) -> None:
@@ -27,6 +33,10 @@ class bishop():
         self.material = 3
         self.color = color
         self.moved = False
+
+    def __dict__(self) -> dict:
+        return {"x": self.x, "y": self.y, "type": self.type, "color": self.color, "moved": self.moved, "typeShort": self.typeShort, "material": self.material}
+
         
 class rook():
     def __init__(self, x, y, color) -> None:
@@ -37,8 +47,11 @@ class rook():
         self.material = 5
         self.color = color
         self.moved = False
+
+    def __dict__(self) -> dict:
+        return {"x": self.x, "y": self.y, "type": self.type, "color": self.color, "moved": self.moved, "typeShort": self.typeShort, "material": self.material}
         
- class queen():
+class queen():
     def __init__(self, x, y, color) -> None:
         self.x = x
         self.y = y
@@ -47,6 +60,9 @@ class rook():
         self.material = 9
         self.color = color
         self.moved = False
+
+    def __dict__(self) -> dict:
+        return {"x": self.x, "y": self.y, "type": self.type, "color": self.color, "moved": self.moved, "typeShort": self.typeShort, "material": self.material}
  
 class king():
     def __init__(self, x, y, color) -> None:
