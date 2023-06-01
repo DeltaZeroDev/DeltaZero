@@ -48,7 +48,7 @@ def bishopmove(bishop : ph.bishop, bishopx : int, bishopy : int, board):
         return False
 
     for x in range(1,7):
-            pseudoLegals.append([bishop.x - x,bishop.y + x])
+            pseudoLegals.append([bishop.x + x,bishop.y - x])
             if check():
                 break
     for x in range(1,7):
@@ -56,13 +56,17 @@ def bishopmove(bishop : ph.bishop, bishopx : int, bishopy : int, board):
             if check():
                 break
     for x in reversed(range(7,0,-1)):
-            pseudoLegals.append([bishop.x + x,bishop.y - x])
+            pseudoLegals.append([bishop.x - x,bishop.y + x])
             if check():
                 break
     for x in reversed(range(7,0,-1)):
             pseudoLegals.append([bishop.x - x,bishop.y - x])
             if check():
                 break
+
+    if [bishopx, bishopy] in pseudoLegals:
+         bishop.x = bishopx
+         bishop.y = bishopy
 
     else:
         print("illegal move")
