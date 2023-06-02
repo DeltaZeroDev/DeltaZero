@@ -19,6 +19,8 @@ def moveKnight(x, y, newX, newY, board : bh.main):
     board.setPiece(int(x), int(y), mh.knightmove(board.getPiece(int(x), int(y)), int(newX), int(newY)))
 def moveBishop(x, y, newX, newY, board : bh.main):
     board.setPiece(int(x), int(y), mh.bishopmove(board.getPiece(int(x), int(y)), int(newX), int(newY), board))
+def movePawn(x, y, newX, newY, board : bh.main):
+    board.setPiece(int(x), int(y), mh.pawnmove(board.getPiece(int(x), int(y)), int(newX), int(newY), board))
 
 if __name__ == "__main__":
     board = bh.main()
@@ -34,3 +36,7 @@ if __name__ == "__main__":
         elif board.getBoard()[int(x)][int(y)]["type"] == "bishop":
             newX, newY = input("new x: "), input("new y: ")
             moveBishop(x, y, newX, newY, board)
+        
+        elif board.getBoard()[int(x)][int(y)]["type"] == "pawn":
+            newX, newY = input("new x: "), input("new y: ")
+            movePawn(x, y, newX, newY, board)
