@@ -71,3 +71,13 @@ def bishopmove(bishop : ph.bishop, bishopx : int, bishopy : int, board):
     else:
         print("illegal move")
     return bishop
+
+def pawnmove(pawn : ph.pawn, pawny : int, pawnx : int, board):
+    pseudoLegals = []
+    pseudoLegals.append([pawn.y + 1,pawn.x])
+    if not board.isOccupied(*pseudoLegals[-1]):
+        pseudoLegals.append([pawn.y + 2,pawn.x])
+
+        
+          
+
