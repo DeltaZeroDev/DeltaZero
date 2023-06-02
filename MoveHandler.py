@@ -77,6 +77,8 @@ def pawnmove(pawn : ph.pawn, pawny : int, pawnx : int, board):
     pseudoLegals.append([pawn.y + 1,pawn.x])
     if not board.isOccupied(*pseudoLegals[-1]):
         pseudoLegals.append([pawn.y + 2,pawn.x])
+    
+    return pawn
 
         
           
