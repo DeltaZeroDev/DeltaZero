@@ -8,7 +8,9 @@ class main():
 
     def getBoard(self):
         board = {}
+        print(self.board)
         for peice in self.board:
+            print(peice)
             peice = peice.__dict__()
             if peice["x"] not in board:
                 board[peice["x"]] = {}
@@ -30,6 +32,7 @@ class main():
     def setPiece(self, x, y, piece):
         for i in range(len(self.board)):
             if self.board[i].x == x and self.board[i].y == y:
+                del self.board[i]
                 self.board[i] = piece
                 return
         self.board.append(piece)
