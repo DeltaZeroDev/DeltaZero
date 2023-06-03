@@ -79,14 +79,15 @@ def pawnmove(pawn : ph.pawn, pawnx : int, pawny : int, board):
     forward = -1 if pawn.color == "black" else 1
     takeleft = [pawn.x - 1,pawn.y + forward]
     takeright = [pawn.x + 1,pawn.y + forward]
-    if not board.isOccupied(pawn.x,pawn.y + forward):
-        pseudoLegals.append([pawn.x,pawn.y + forward])
-        if not board.isOccupied(pawn.x,pawn.y + (forward * 2)) and not pawn.moved:
-            pseudoLegals.append([pawn.x,pawn.y + (forward * 2)])
-    if board.isOccupied(*takeleft) and board.getPiece(*takeleft).color != pawn.color:
-        pseudoLegals.append(takeleft)
-    if board.isOccupied(*takeright) and board.getPiece(*takeright).color != pawn.color:
-        pseudoLegals.append(takeright)
+    if takeleft[1] > -1 and takeleft[1] < 8:
+            if not board.isOccupied(pawn.x,pawn.y + forward):
+                pseudoLegals.append([pawn.x,pawn.y + forward])
+                if not board.isOccupied(pawn.x,pawn.y + (forward * 2)) and not pawn.moved:
+                    pseudoLegals.append([pawn.x,pawn.y + (forward * 2)])
+            if takeleft[1] > -1 and board.isOccupied(*takeleft) and board.getPiece(*takeleft).color != pawn.color:
+                pseudoLegals.append(takeleft)
+            if takeright[1] < 8 and board.isOccupied(*takeright) and board.getPiece(*takeright).color != pawn.color:
+                pseudoLegals.append(takeright)
     if [pawnx,pawny] in pseudoLegals:
         if board.isOccupied(pawnx,pawny):
             board.removePiece(pawnx,pawny)
@@ -96,6 +97,44 @@ def pawnmove(pawn : ph.pawn, pawnx : int, pawny : int, board):
     else:
          print("illegal move")
     return pawn
-        
+
+def rookmove(rook : ph.rook, rookx : int, rooky : int, board):
+    pseudoLegals = []
+    for i in range(rook.y+1,8):
+        pseudoLegals.append([rook.x,i])
+        if board.isOccupied(*pseudoLegals[-1]):
+            if board.getPiece(*pseudoLegals[-1]).color == rook.color:
+                pseudoLegals.pop()
+            break
+    for i in range(rook.y - 1,-1,-1):
+          pseudoLegals.append([rook.x,i])
+          if board.isOccupied(*pseudoLegals[-1]):
+                if board.getPiece(*pseudoLegals[-1]).color == rook.color:
+                    pseudoLegals.pop()
+                break
+    for i in range(rook.x+1,8):
+        pseudoLegals.append([i,rook.y])
+        if board.isOccupied(*pseudoLegals[-1]):
+            if board.getPiece(*pseudoLegals[-1]).color == rook.color:
+                pseudoLegals.pop()
+            break
+    for i in range(rook.x - 1,-1,-1):
+          pseudoLegals.append([i, rook.y])
+          if board.isOccupied(*pseudoLegals[-1]):
+                if board.getPiece(*pseudoLegals[-1]).color == rook.color:
+                    pseudoLegals.pop()
+                break
+    if [rookx,rooky] in pseudoLegals:
+        if board.isOccupied(rookx,rooky):
+            board.removePiece(rookx,rooky)
+        rook.x = rookx
+        rook.y = rooky
+        rook.moved = True
+    else:
+         print("illegal move")
+    return rook
+
+
+               
           
 
