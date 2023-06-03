@@ -8,14 +8,19 @@ class main():
 
     def getBoard(self):
         board = {}
-        print(self.board)
         for peice in self.board:
-            print(peice)
             peice = peice.__dict__()
             if peice["x"] not in board:
                 board[peice["x"]] = {}
             board[peice["x"]][peice["y"]] = peice
         return board
+    
+    def removePiece(self, x, y):
+        newboard = []
+        for piece in self.board:
+            if not (piece.x == x and piece.y == y):
+                newboard.append(piece)
+        self.board = newboard
     
     def isOccupied(self,x,y):
         sortedBoard = [[0] * 8 for i in range(0,8)]
@@ -32,7 +37,6 @@ class main():
     def setPiece(self, x, y, piece):
         for i in range(len(self.board)):
             if self.board[i].x == x and self.board[i].y == y:
-                del self.board[i]
                 self.board[i] = piece
                 return
         self.board.append(piece)
