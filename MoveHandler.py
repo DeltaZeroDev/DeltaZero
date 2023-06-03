@@ -65,21 +65,37 @@ def bishopmove(bishop : ph.bishop, bishopx : int, bishopy : int, board):
                 break
 
     if [bishopx, bishopy] in pseudoLegals:
-         bishop.x = bishopx
-         bishop.y = bishopy
+        if board.isOccupied(bishopx,bishopy):
+            board.removePiece(bishopx,bishopy)
+        bishop.x = bishopx
+        bishop.y = bishopy
 
     else:
         print("illegal move")
     return bishop
 
-def pawnmove(pawn : ph.pawn, pawny : int, pawnx : int, board):
+def pawnmove(pawn : ph.pawn, pawnx : int, pawny : int, board):
     pseudoLegals = []
-    pseudoLegals.append([pawn.y + 1,pawn.x])
-    if not board.isOccupied(*pseudoLegals[-1]):
-        pseudoLegals.append([pawn.y + 2,pawn.x])
-    
+    forward = -1 if pawn.color == "black" else 1
+    takeleft = [pawn.x - 1,pawn.y + forward]
+    takeright = [pawn.x + 1,pawn.y + forward]
+    if not board.isOccupied(pawn.x,pawn.y + forward):
+        pseudoLegals.append([pawn.x,pawn.y + forward])
+        if not board.isOccupied(pawn.x,pawn.y + (forward * 2)) and not pawn.moved:
+            pseudoLegals.append([pawn.x,pawn.y + (forward * 2)])
+    if board.isOccupied(*takeleft) and board.getPiece(*takeleft).color != pawn.color:
+        pseudoLegals.append(takeleft)
+    if board.isOccupied(*takeright) and board.getPiece(*takeright).color != pawn.color:
+        pseudoLegals.append(takeright)
+    if [pawnx,pawny] in pseudoLegals:
+        if board.isOccupied(pawnx,pawny):
+            board.removePiece(pawnx,pawny)
+        pawn.x = pawnx
+        pawn.y = pawny
+        pawn.moved = True
+    else:
+         print("illegal move")
     return pawn
-
         
           
 
