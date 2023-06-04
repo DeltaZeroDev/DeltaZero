@@ -1,6 +1,6 @@
 import pieceHandler as ph
 
-def knightmove(knight : ph.knight, knightx : int, knighty : int):
+def knightmove(knight : ph.knight, knightx : int, knighty : int, board):
     if knightx > 7 or knighty > 7:
         print("illegal move")
         return knight
@@ -8,29 +8,71 @@ def knightmove(knight : ph.knight, knightx : int, knighty : int):
         print("illegal move")
         return knight
     elif knightx == knight.x + 2 and knighty == knight.y + 1:
-        knight.x = knightx
-        knight.y = knighty
+        if board.isOccupied(knightx,knighty) and board.getPeice(knightx,knighty).color != knight.color:
+                board.removePiece(knightx,knighty)
+                knight.x = knightx
+                knight.y = knighty
+        elif not board.isOccupied(knightx,knighty):
+                knight.x = knightx
+                knight.y = knighty
     elif knightx == knight.x + 2 and knighty == knight.y - 1:
-        knight.x = knightx
-        knight.y = knighty
+        if board.isOccupied(knightx,knighty) and board.getPeice(knightx,knighty).color != knight.color:
+                board.removePiece(knightx,knighty)
+                knight.x = knightx
+                knight.y = knighty
+        elif not board.isOccupied(knightx,knighty):
+                knight.x = knightx
+                knight.y = knighty
     elif knightx == knight.x + 1 and knighty == knight.y + 2:
-        knight.x = knightx
-        knight.y = knighty
+        if board.isOccupied(knightx,knighty) and board.getPeice(knightx,knighty).color != knight.color:
+                board.removePiece(knightx,knighty)
+                knight.x = knightx
+                knight.y = knighty
+        elif not board.isOccupied(knightx,knighty):
+                knight.x = knightx
+                knight.y = knighty
     elif knightx == knight.x - 1 and knighty == knight.y + 2:
-        knight.x = knightx
-        knight.y = knighty
+        if board.isOccupied(knightx,knighty) and board.getPeice(knightx,knighty).color != knight.color:
+                board.removePiece(knightx,knighty)
+                knight.x = knightx
+                knight.y = knighty
+        elif not board.isOccupied(knightx,knighty):
+                knight.x = knightx
+                knight.y = knighty
     elif knightx == knight.x - 2 and knighty == knight.y + 1:
-        knight.x = knightx
-        knight.y = knighty
+        if board.isOccupied(knightx,knighty) and board.getPeice(knightx,knighty).color != knight.color:
+                board.removePiece(knightx,knighty)
+                knight.x = knightx
+                knight.y = knighty
+        elif not board.isOccupied(knightx,knighty):
+                knight.x = knightx
+                knight.y = knighty
     elif knightx == knight.x - 2 and knighty == knight.y - 1:
-        knight.x = knightx
-        knight.y = knighty
+        if board.isOccupied(knightx,knighty) and board.getPeice(knightx,knighty).color != knight.color:
+                board.removePiece(knightx,knighty)
+                knight.x = knightx
+                knight.y = knighty
+        elif not board.isOccupied(knightx,knighty):
+                knight.x = knightx
+                knight.y = knighty
     elif knightx == knight.x - 1 and knighty == knight.y - 2:
-        knight.x = knightx
-        knight.y = knighty
+        if board.isOccupied(knightx,knighty) and board.getPeice(knightx,knighty).color != knight.color:
+                board.removePiece(knightx,knighty)
+                knight.x = knightx
+                knight.y = knighty
+        elif not board.isOccupied(knightx,knighty):
+                knight.x = knightx
+                knight.y = knighty
     elif knightx == knight.x + 1 and knighty == knight.y - 2:
-        knight.x = knightx
-        knight.y = knighty
+        if board.isOccupied(knightx,knighty) and board.getPeice(knightx,knighty).color != knight.color:
+                board.removePiece(knightx,knighty)
+                knight.x = knightx
+                knight.y = knighty
+        elif not board.isOccupied(knightx,knighty):
+                knight.x = knightx
+                knight.y = knighty
+        
+        
     else:
         print("illegal move")
     return knight
@@ -135,6 +177,11 @@ def rookmove(rook : ph.rook, rookx : int, rooky : int, board):
     return rook
 
 
-               
-          
+
+
+
+def queenmove(queen : ph.queen, queenx : int, queeny : int, board):
+     
+
+   
 
